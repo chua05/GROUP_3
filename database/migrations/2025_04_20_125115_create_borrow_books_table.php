@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('borrow_books', function (Blueprint $table) {
             $table->id('Borrow_Id');
-            $table->foreignId('User_Id')->constrained('students', 'Student_Id')->onDelete('cascade');
-            $table->foreignId('Book_Id')->constrained('books', 'Book_Id')->onDelete('cascade');
+            $table->unsignedBigInteger('User_Id');
+            $table->foreign('User_Id')->references('Student_Id')->on('students')->onDelete('cascade');
+            $table->unsignedBigInteger('Book_Id');
+            $table->foreign('Book_Id')->references('Book_Id')->on('books')->onDelete('cascade');
             $table->date('Borrow_Date');
             $table->date('Return_Date')->nullable();
             $table->timestamps();
