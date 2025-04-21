@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id('StudentId');
             $table->string('Fullname');
             $table->string('Course');
+            $table->dateTime('Entry_Time')->nullable();
+            $table->dateTime('Exit_Time')->nullable();
+            $table->string('Status');
             $table->timestamps();
         });
     }
